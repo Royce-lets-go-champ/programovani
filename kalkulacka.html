@@ -1,0 +1,122 @@
+<!doctype HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Pocita to">
+        <meta name="keywords" content="kalkulcka">
+        <meta name="author" content="Ondřej Kotyk">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Kalkulacka</title>
+        <style>
+
+            #content {
+                text-align: center;
+                margin: auto;
+                width: 30%;
+                background-color: #262626;
+                border-style: solid;
+                border-width: 5px;
+                border-color: #00b300;
+                height: 30%;
+                top:50%;
+                left: 50%;
+                transform: translate3d(-50%,-50%, 0);
+                position: absolute;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            input[type=text] {
+                text-align: center;
+                padding: 12px 20px;
+                margin: 8px 0;
+                font-size: 18px;
+                display: inline-block;
+                border: 2px solid #00b300;
+                border-radius: 6px;
+                color: black;
+                box-sizing: border-box;
+            }
+            #pole {
+                padding-top: 12%;
+            }
+            button {
+                background-color: #00b300;
+                border: 2px solid green;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                font-size: 20px;
+                cursor: pointer;
+                width: 150px;
+                margin-top: 3%;
+            }
+            button:hover {
+                color: black;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            #vysledek {
+                color: black;
+                font-weight: 600;
+            }
+            #metoda {
+                font-weight: 600; 
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <div id="pole">
+                <input type="text" id="cislo1">
+                <select oninput="pocitani();" id="metoda">
+                    <option value="0">+</option>
+                    <option value="1">-</option>
+                    <option value="2">*</option>
+                    <option value="3">/</option>
+                </select>
+
+                <input oninput="pocitani();" type="text" id="cislo2"><br>
+
+                <input oninput="pocitani();" type="text" id="vysledek" disabled=""><br>
+
+
+                <button onclick="reset();" type="button">Resetovat</button><br>
+
+
+            </div>
+        </div>
+
+        <script>
+            function pocitani() {
+                var a = parseInt(document.getElementById("cislo1").value);
+                var b = parseInt(document.getElementById("cislo2").value);
+                var metoda = parseInt(document.getElementById("metoda").value);
+                var vysledek;
+
+                switch (metoda) {
+                    case 0:
+                        vysledek = a + b;
+                        break;
+                    case 1:
+                        vysledek = a - b;
+                        break;
+                    case 2:
+                        vysledek = a * b;
+                        break;
+                    case 3:
+                        vysledek = a / b;
+                        break;
+                }
+                document.getElementById("vysledek").value = vysledek;
+
+            }
+
+            function reset() {
+                document.getElementById("cislo1").value = "";
+                document.getElementById("cislo2").value = "";
+                document.getElementById("vysledek").value = "";
+
+            }
+
+        </script>
+    </body>
+</html>    
